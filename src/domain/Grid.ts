@@ -1,18 +1,27 @@
 import { Entity } from "./Entity";
 import { Position } from "./Position";
+import { Empty } from "./Empty";
 
+/**
+ * Grille du jeu contenant toutes les entités.
+ */
 export class Grid {
-    private cells: Entity[][];
 
-    constructor(width: number, height: number, defaultEntity: Entity) {
-        this.cells = [];
+    private cells: Entity[][] = [];  // ← FIX : initialisation immédiate
 
+    constructor(
+        width: number,
+        height: number,
+        defaultEntity: Entity = new Empty(new Position(0, 0))
+    ) {
         for (let y = 0; y < height; y++) {
             const row: Entity[] = [];
+
             for (let x = 0; x < width; x++) {
-                
+                // Chaque cellule commence avec l'entité par défaut
                 row.push(defaultEntity);
             }
+
             this.cells.push(row);
         }
     }

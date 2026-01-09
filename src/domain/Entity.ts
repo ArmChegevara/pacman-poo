@@ -1,5 +1,9 @@
 import { Position } from "./Position";
+import { IRenderable } from "./IRenderable";
 
+/**
+ * Classe abstraite de base
+ */
 export abstract class Entity {
     protected position: Position;
 
@@ -16,4 +20,13 @@ export abstract class Entity {
     }
 
     abstract toChar(): string;
+}
+
+/**
+ * Classe Empty utilisée pour représenter une case vide
+ */
+export class Empty extends Entity implements IRenderable {
+    toChar(): string {
+        return " ";
+    }
 }
